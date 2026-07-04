@@ -1,0 +1,164 @@
+#include <stdio.h> 
+#include <string.h> 
+
+int cadastrarFuncionario(char nome[][50], char email[][30], float salario[], int qtd); 
+void mostrarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd);  
+void buscarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd);
+void maiorSalario(char nome[][50], float salario[], int qtd);
+void mediaSalarial(float salario[], int qtd)
+
+int main() {     
+    char nome[10][50];     
+    char email[10][30];     
+    float salario[10];    
+
+    int opcao;     
+    int qtd = 0;      
+
+    do     {         
+        printf("\n MENU DE OPÇOES\n");         
+        printf("1 - Cadastrar novo funcionario\n");         
+        printf("2 - Mostrar todos os funcionarios\n");         
+        printf("3 - Buscar funcionario\n");         
+        printf("4 - Mostrar maior salario\n");        
+        printf("5 - Mostrar media salarial\n");         
+        printf("6 - Sair\n");         
+        printf("Escolha uma opcao: ");         
+        scanf("%d", &opcao);     
+
+        switch(opcao)         
+        {             
+            case 1:                 
+                qtd = cadastrarFuncionario(nome, email, salario, qtd);                
+                break;  
+
+            case 2: 
+                mostrarFuncionarios(nome, email, salario, qtd);                 
+                break;      
+
+            case 3:                 
+                buscarFuncionarios(nome, email, salario, qtd);                 
+                break;     
+
+            case 4:                 
+                maiorSalario(nome, salario, qtd);                 
+                break; 
+
+            case 5:                 
+                printf("Funcao em desenvolvimento.\n");                 
+                break;           
+
+            case 6:                 
+                printf("Programa encerrado.\n");                 
+                break;        
+
+            default:                 
+                printf("Opcao invalida.\n");         
+            }   
+
+        } while(opcao != 6);      
+        return 0; 
+    
+    }  
+    int cadastrarFuncionario(char nome[][50], char email[][30], float salario[], int qtd) 
+    {     
+        if(qtd == 10)     
+        {         
+            printf("\nAgenda cheia! Nao e possivel cadastrar mais funcionarios.\n");         
+            return qtd;     
+        }      
+        printf("\nDigite o nome do funcionario: ");     
+        scanf(" %[^\n]", nome[qtd]);  
+
+        printf("Digite o e-mail: ");     
+        scanf(" %[^\n]", email[qtd]);  
+
+        printf("Digite o salario: ");     
+        scanf("%f", &salario[qtd]);   
+
+        printf("\nFuncionario cadastrado com sucesso!\n");      
+        
+        return qtd + 1; 
+    }  
+    
+    void mostrarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd) 
+    {     
+        int i;      
+        if(qtd == 0)     
+        {         
+            printf("\nNenhum funcionario cadastrado.\n");         
+            return;     
+        }   
+
+        printf("\nFUNCIONARIOS CADASTRADOS \n");  
+        for(i = 0; i < qtd; i++) 
+        { 
+            printf("\nFuncionario %d\n", i + 1); 
+            printf("Nome: %s\n", nome[i]); 
+            printf("E-mail: %s\n", email[i]); 
+            printf("Salario: R$ %.2f\n", salario[i]); 
+        }  
+    }
+    void buscarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd)
+    {
+        char nome_compl[50];
+        int encontrado = 0;
+        
+        if(qtd == 0){         
+            printf("\nNenhum funcionario cadastrado.\n");         
+            return;     
+        } 
+        
+        printf("Digite o nome completo: ");
+        scanf(" %[^\n]", nome_compl);
+        
+        for (int i = 0; i < 10; i++){
+                if ((strcmp(nome[i], nome_compl) == 0)){
+                    encontrado = 1;
+                    printf("\nNome: %s\n", nome_compl);
+                    printf("Índice: %d\n", i);
+                    printf("Email: %s\n", email[i]);
+                    printf("Salário: %.2f\n", salario[i]);
+                }
+        }
+        if (encontrado == 0){
+            printf("Não foi encontrado!\n");
+        }
+    }
+
+    void maiorSalario(char nome[][50], float salario[], int qtd){
+        
+        float maior_sal;
+        char nome_maior[50];
+        
+        if(qtd == 0){         
+            printf("\nNenhum funcionario cadastrado.\n");         
+            return;     
+        } 
+        
+        maior_sal = salario[0];
+        for (int i = 1; i < 10; i++){
+            if (salario[i] > maior_sal){
+                maior_sal = salario[i];
+                strcpy(nome_maior, nome[i]);
+            }
+        }
+        printf("\nO maior salário é de %s. O valor é %.2f", nome_maior, maior_sal);
+    }
+
+void mediaSalarial(float salario[], int qtd) {
+if (qtd == 0) {
+printf("Nenhum funcionario cadastrado.\n");
+return;
+}
+
+float soma = 0;
+
+for (int i = 0; i < total; i++) {
+    soma += salario[i];
+}
+
+printf("Media: %.2f\n", soma / qtd);
+
+}
+
