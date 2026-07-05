@@ -1,3 +1,10 @@
+/*SISTEMA DE CADASTRO E AGENDA DE FUNCIONÁRIOS EM C 
+
+Curso: Ciência da Computação
+Disciplina: Introdução à Ciência da Computação
+Grupo: Ana Julia Ferreira Mendes, João Vitor Rodrigues Lima e Thais Fernandes Silva
+*/ 
+
 #include <stdio.h> 
 #include <string.h> 
 
@@ -85,7 +92,7 @@ int main() {
         printf("Digite o salario: ");     
         scanf("%f", &salario[qtd]);   
 
-        printf("\Funcionário cadastrado com sucesso!\n");      
+        printf("\nFuncionário cadastrado com sucesso!\n");      
         
         return qtd + 1; 
     }  
