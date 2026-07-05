@@ -1,19 +1,24 @@
 #include <stdio.h> 
 #include <string.h> 
 
+//Declaração de cada uma das funções que serão utilizadas no código
+
 int cadastrarFuncionario(char nome[][50], char email[][30], float salario[], int qtd); 
 void mostrarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd);  
 void buscarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd);
 void maiorSalario(char nome[][50], float salario[], int qtd);
 void mediaSalarial(float salario[], int qtd);
 
+
 int main() {     
-    char nome[10][50];     
+    char nome[10][50];   //Declaração das matrizes, vetores e das variáveis
     char email[10][30];     
     float salario[10];    
 
     int opcao;     
     int qtd = 0;      
+
+//Utilização do do-while para que o menu apareça ao menos uma vez e possa repetir até que o usuário digite “6”
 
     do     {         
         printf("\n MENU DE OPÇOES\n");         
@@ -25,6 +30,8 @@ int main() {
         printf("6 - Sair\n");         
         printf("Escolha uma opcao: ");         
         scanf("%d", &opcao);     
+
+//Cada opção levará para uma função
 
         switch(opcao)         
         {             
@@ -59,12 +66,14 @@ int main() {
         } while(opcao != 6);      
         return 0; 
     
+//Função que irá cadastrar os funcionários, guardando o nome, email e o salário (opção 1)
+
     }  
     int cadastrarFuncionario(char nome[][50], char email[][30], float salario[], int qtd) 
     {     
         if(qtd == 10)     
         {         
-            printf("\nAgenda cheia! Nao e possivel cadastrar mais funcionarios.\n");         
+            printf("\nAgenda cheia! Nao e possivel cadastrar mais funcionários.\n");         
             return qtd;     
         }      
         printf("\nDigite o nome do funcionario: ");     
@@ -76,17 +85,19 @@ int main() {
         printf("Digite o salario: ");     
         scanf("%f", &salario[qtd]);   
 
-        printf("\nFuncionario cadastrado com sucesso!\n");      
+        printf("\Funcionário cadastrado com sucesso!\n");      
         
         return qtd + 1; 
     }  
     
+//Função que irá mostrar na tela todas as informações dos usuários cadastrados (opção 2)
+
     void mostrarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd) 
     {     
         int i;      
         if(qtd == 0)     
         {         
-            printf("\nNenhum funcionario cadastrado.\n");         
+            printf("\nNenhum funcionário cadastrado.\n");         
             return;     
         }   
 
@@ -99,13 +110,16 @@ int main() {
             printf("Salario: R$ %.2f\n", salario[i]); 
         }  
     }
+
+//Função responsável por buscar um funcionário e mostrar suas informações (opção 3)
+
     void buscarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd)
     {
         char nome_compl[50];
         int encontrado = 0;
         
         if(qtd == 0){         
-            printf("\nNenhum funcionario cadastrado.\n");         
+            printf("\nNenhum funcionário cadastrado.\n");         
             return;     
         } 
         
@@ -126,13 +140,15 @@ int main() {
         }
     }
 
+//Função responsável por mostrar o maior salário e o nome da pessoa (opção 4)
+
     void maiorSalario(char nome[][50], float salario[], int qtd){
         
         float maior_sal;
         char nome_maior[50];
         
         if(qtd == 0){         
-            printf("\nNenhum funcionario cadastrado.\n");         
+            printf("\nNenhum funcionário cadastrado.\n");         
             return;     
         } 
         
@@ -146,9 +162,11 @@ int main() {
         printf("\nO maior salário é de %s. O valor é %.2f\n", nome_maior, maior_sal);
     }
 
+// Função que mostra a média salarial (opção 5)
+
 void mediaSalarial(float salario[ ], int qtd) {
 if (qtd == 0) {
-printf("Nenhum funcionario cadastrado.\n");
+printf("Nenhum funcionário cadastrado.\n");
 return;
 }
 
