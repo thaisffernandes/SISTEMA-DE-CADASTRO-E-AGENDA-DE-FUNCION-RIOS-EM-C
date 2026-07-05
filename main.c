@@ -5,7 +5,7 @@ int cadastrarFuncionario(char nome[][50], char email[][30], float salario[], int
 void mostrarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd);  
 void buscarFuncionarios(char nome[][50], char email[][30], float salario[], int qtd);
 void maiorSalario(char nome[][50], float salario[], int qtd);
-void mediaSalarial(float salario[], int qtd)
+void mediaSalarial(float salario[], int qtd);
 
 int main() {     
     char nome[10][50];     
@@ -45,7 +45,7 @@ int main() {
                 break; 
 
             case 5:                 
-                printf("Funcao em desenvolvimento.\n");                 
+                mediaSalarial(salario, qtd);               
                 break;           
 
             case 6:                 
@@ -137,16 +137,16 @@ int main() {
         } 
         
         maior_sal = salario[0];
-        for (int i = 1; i < 10; i++){
+        for (int i = 1; i < qtd; i++){
             if (salario[i] > maior_sal){
                 maior_sal = salario[i];
                 strcpy(nome_maior, nome[i]);
             }
         }
-        printf("\nO maior salário é de %s. O valor é %.2f", nome_maior, maior_sal);
+        printf("\nO maior salário é de %s. O valor é %.2f\n", nome_maior, maior_sal);
     }
 
-void mediaSalarial(float salario[], int qtd) {
+void mediaSalarial(float salario[ ], int qtd) {
 if (qtd == 0) {
 printf("Nenhum funcionario cadastrado.\n");
 return;
@@ -154,7 +154,7 @@ return;
 
 float soma = 0;
 
-for (int i = 0; i < total; i++) {
+for (int i = 0; i < qtd; i++) {
     soma += salario[i];
 }
 
